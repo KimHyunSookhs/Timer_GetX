@@ -34,11 +34,11 @@ class TimerController extends GetxController {
     timer = Timer.periodic(Duration(seconds: 1), (timer) {
       if (remainingSecond > 0) {
         isRunning.value = true;
-        NotificationService().showNotification(remainingSecond.value);
         remainingSecond.value--;
         update();
       } else {
         isRunning.value = false;
+        NotificationService().showNotification(remainingSecond.value);
         timer.cancel();
         update();
       }

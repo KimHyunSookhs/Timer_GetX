@@ -50,8 +50,8 @@ class NotificationService {
     // 알림 보이기
     await flutterLocalNotificationsPlugin.show(
       notificationId, // 알림 ID
-      '목표 도달', // 알림 제목
-      '$targetNumber 회 눌렀습니다!', // 알림 메시지
+      'Time Over', // 알림 제목
+      '시간 종료!', // 알림 메시지
       notificationDetails, // 알림 상세 정보
     );
   }
