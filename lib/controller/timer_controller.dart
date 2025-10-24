@@ -61,8 +61,10 @@ class TimerController extends GetxController {
   }
 
   setTime(TimeStatus status) {
+    isRunning.value = false;
     maxSecond = status.seconds;
     remainingSecond.value = status.seconds;
+    timer.cancel();
     update();
   }
 }

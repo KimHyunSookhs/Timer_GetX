@@ -131,6 +131,7 @@ class _TimerViewState extends State<TimerView> {
                             const SizedBox(width: 10),
                       ),
                     ),
+                    const SizedBox(height: 30),
                     TextButton(
                       onPressed: () {
                         timerController.resetTimer();
