@@ -1,20 +1,28 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
+import 'package:stop_watch/status/time_status.dart';
 import 'package:stop_watch/status/timer_status.dart';
 
 class TimerController extends GetxController {
   final RxInt seconds = 0.obs;
   final isRunning = false.obs;
   final timerStatus = <TimerStatus>[].obs;
-  final int maxSecond = 10;
+  final timeStatus = <TimeStatus>[].obs;
+  int maxSecond = 10;
 
   RxInt remainingSecond = 10.obs;
   late Timer timer;
 
   @override
+  void onInit() {
+    super.onInit();
+    timeStatus.value = TimeStatus.values;
+  }
+
+  @override
   void dispose() {
-    timer?.cancel();
+    timer.cancel();
     super.dispose();
   }
 
@@ -42,5 +50,11 @@ class TimerController extends GetxController {
       startTimer();
       update();
     }
+  }
+
+  setTime(TimeStatus status) {
+    maxSecond = status.seconds;
+    remainingSecond.value = status.seconds;
+    update();
   }
 }

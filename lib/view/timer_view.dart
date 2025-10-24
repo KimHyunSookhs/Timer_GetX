@@ -98,6 +98,37 @@ class _TimerViewState extends State<TimerView> {
                         ],
                       ),
                     ),
+                    SizedBox(height: 50),
+                    SizedBox(
+                      height: 60,
+                      child: ListView.separated(
+                        itemCount: timerController.timeStatus.length,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            color: Colors.orangeAccent,
+                            child: TextButton(
+                              onPressed: () {
+                                timerController.setTime(
+                                  timerController.timeStatus[index],
+                                );
+                                print(timerController.timeStatus[index].value);
+                              },
+                              child: Text(
+                                '${timerController.timeStatus[index].value}분',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                        separatorBuilder: (context, index) =>
+                            const SizedBox(width: 10),
+                      ),
+                    ),
                   ],
                 );
               },
