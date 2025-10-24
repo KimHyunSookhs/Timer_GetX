@@ -9,9 +9,9 @@ class TimerController extends GetxController {
   final isRunning = false.obs;
   final timerStatus = <TimerStatus>[].obs;
   final timeStatus = <TimeStatus>[].obs;
-  int maxSecond = 10;
+  int maxSecond = 60;
 
-  RxInt remainingSecond = 10.obs;
+  RxInt remainingSecond = 60.obs;
   late Timer timer;
 
   @override
@@ -50,6 +50,14 @@ class TimerController extends GetxController {
       startTimer();
       update();
     }
+  }
+
+  void resetTimer() {
+    timer.cancel();
+    isRunning.value = false;
+    maxSecond = 60;
+    remainingSecond.value = 60;
+    update();
   }
 
   setTime(TimeStatus status) {

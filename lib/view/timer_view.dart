@@ -34,7 +34,10 @@ class _TimerViewState extends State<TimerView> {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text('25분간 집중해보기', style: TextStyle(color: Colors.white)),
+                    Text(
+                      '타이머',
+                      style: TextStyle(color: Colors.white, fontSize: 40),
+                    ),
                     const SizedBox(height: 30),
                     SizedBox(
                       width: 300,
@@ -113,7 +116,6 @@ class _TimerViewState extends State<TimerView> {
                                 timerController.setTime(
                                   timerController.timeStatus[index],
                                 );
-                                print(timerController.timeStatus[index].value);
                               },
                               child: Text(
                                 '${timerController.timeStatus[index].value}분',
@@ -127,6 +129,15 @@ class _TimerViewState extends State<TimerView> {
                         },
                         separatorBuilder: (context, index) =>
                             const SizedBox(width: 10),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        timerController.resetTimer();
+                      },
+                      child: Text(
+                        '초기화',
+                        style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
                     ),
                   ],
