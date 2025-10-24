@@ -7,16 +7,17 @@ plugins {
 
 android {
     namespace = "com.stop.watch.stop_watch"
-    compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    compileSdk = 35
+    ndkVersion = "27.0.12077973"
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        isCoreLibraryDesugaringEnabled = true
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
     defaultConfig {
@@ -24,11 +25,13 @@ android {
         applicationId = "com.stop.watch.stop_watch"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
+        minSdk = 21
+        targetSdk = 35
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
+
+
 
     buildTypes {
         release {
@@ -41,4 +44,8 @@ android {
 
 flutter {
     source = "../.."
+}
+dependencies {
+    // ✅ Core library desugaring 라이브러리 추가
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4"); // 최신 버전 확인 후 사용
 }

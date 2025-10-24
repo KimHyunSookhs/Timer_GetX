@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:stop_watch/controller/push_controller.dart';
 import 'package:stop_watch/controller/timer_controller.dart';
 
 class TimerView extends StatefulWidget {
@@ -11,6 +12,7 @@ class TimerView extends StatefulWidget {
 
 class _TimerViewState extends State<TimerView> {
   final TimerController timerController = Get.put(TimerController());
+  final PushController pushController = Get.put(PushController());
 
   String formatTime(int seconds) {
     int minutes = seconds ~/ 60;

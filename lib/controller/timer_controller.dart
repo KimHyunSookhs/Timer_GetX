@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
+import 'package:stop_watch/controller/push_controller.dart';
+import 'package:stop_watch/push/local_push_notifications.dart';
 import 'package:stop_watch/status/time_status.dart';
 import 'package:stop_watch/status/timer_status.dart';
 
@@ -13,6 +15,8 @@ class TimerController extends GetxController {
 
   RxInt remainingSecond = 60.obs;
   late Timer timer;
+
+  final pushController = Get.put(PushController());
 
   @override
   void onInit() {
@@ -30,6 +34,7 @@ class TimerController extends GetxController {
     timer = Timer.periodic(Duration(seconds: 1), (timer) {
       if (remainingSecond > 0) {
         isRunning.value = true;
+        NotificationService().showNotification(remainingSecond.value);
         remainingSecond.value--;
         update();
       } else {
