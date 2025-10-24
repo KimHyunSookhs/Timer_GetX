@@ -7,18 +7,25 @@ class TimerController extends GetxController {
   final RxInt seconds = 0.obs;
   final isRunning = false.obs;
   final timerStatus = <TimerStatus>[].obs;
-  final int maxSecond = 30;
+  final int maxSecond = 10;
 
-  RxInt remainingSecond = 30.obs;
+  RxInt remainingSecond = 10.obs;
   late Timer timer;
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
+  }
 
   void startTimer() {
     timer = Timer.periodic(Duration(seconds: 1), (timer) {
       if (remainingSecond > 0) {
         isRunning.value = true;
-        remainingSecond--;
+        remainingSecond.value--;
         update();
       } else {
+        isRunning.value = false;
         timer.cancel();
         update();
       }
@@ -28,18 +35,12 @@ class TimerController extends GetxController {
   //실행중이면 timer캔슬, false일때는 start
   void pausedTimer() {
     if (isRunning.value) {
+      isRunning.value = !isRunning.value;
       timer.cancel();
       update();
     } else {
       startTimer();
       update();
     }
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    timer?.cancel();
-    super.dispose();
   }
 }

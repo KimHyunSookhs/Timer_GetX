@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stop_watch/controller/timer_controller.dart';
 
-class TimerView extends StatelessWidget {
-  TimerView({super.key});
+class TimerView extends StatefulWidget {
+  const TimerView({super.key});
 
+  @override
+  State<TimerView> createState() => _TimerViewState();
+}
+
+class _TimerViewState extends State<TimerView> {
   final TimerController timerController = Get.put(TimerController());
 
   String formatTime(int seconds) {
@@ -51,17 +56,29 @@ class TimerView extends StatelessWidget {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(
-                                  '남은시간',
-                                  style: TextStyle(color: Colors.white),
+                                Column(
+                                  children: [
+                                    Text(
+                                      '남은시간',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                    Text(
+                                      formatTime(
+                                        timerController.remainingSecond.value,
+                                      ),
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 30,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                                 IconButton(
                                   onPressed: () {
-                                    if (timerController.isRunning.value) {
-                                      timerController.pausedTimer();
-                                    } else {
-                                      timerController.startTimer();
-                                    }
+                                    timerController.pausedTimer();
                                   },
                                   icon: timerController.isRunning.value
                                       ? Icon(
