@@ -24,10 +24,10 @@ class _TimerViewState extends State<TimerView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black12,
+
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.all(20),
-          margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
           color: Colors.black,
           child: Align(
             alignment: Alignment.center,
