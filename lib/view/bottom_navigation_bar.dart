@@ -7,7 +7,6 @@ class BottomNavigationBarScaffold extends GetView<NavigationController> {
 
   @override
   Widget build(BuildContext context) {
-    int currentIndex = 0;
     return Obx(
       () => BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
