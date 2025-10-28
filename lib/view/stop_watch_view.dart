@@ -42,7 +42,12 @@ class _StopWatchViewState extends State<StopWatchView> {
                         },
                         child: Text(
                           stopWatchController.isRunning.value ? '멈춤' : '시작',
-                          style: TextStyle(color: Colors.white, fontSize: 45),
+                          style: TextStyle(
+                            color: stopWatchController.isRunning.value
+                                ? Colors.red
+                                : Colors.green,
+                            fontSize: 40,
+                          ),
                         ),
                       ),
                       TextButton(

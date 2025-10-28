@@ -42,6 +42,8 @@ class NotificationService {
               'This channel is used for counter-related notifications',
           // 알림 채널 설명
           importance: Importance.high, // 알림 중요도
+          fullScreenIntent: true,
+          playSound: true,
         );
     // 알림 상세 정보 설정
     final NotificationDetails notificationDetails = NotificationDetails(

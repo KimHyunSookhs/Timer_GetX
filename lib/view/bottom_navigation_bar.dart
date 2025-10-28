@@ -18,8 +18,11 @@ class BottomNavigationBarScaffold extends GetView<NavigationController> {
         unselectedLabelStyle: TextStyle(color: Colors.black),
         currentIndex: controller.currentIndex.value,
         items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.timer), label: '스톱워치'),
-          BottomNavigationBarItem(icon: Icon(Icons.timer), label: '스톱워치'),
+          BottomNavigationBarItem(icon: Icon(Icons.alarm), label: '타이머'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.timer_outlined),
+            label: '스톱워치',
+          ),
         ],
       ),
     );
